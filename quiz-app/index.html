@@ -8,22 +8,22 @@
 		<title>Quiz App</title>
 	</head>
 	<body>
-		<div class="quiz">
+		<div class="app">
 			<div class="container">
-				<main class="quiz__box">
+				<main class="quiz">
 					<div class="quiz__header">
-						<h1 class="quiz__header__title">
-							What was the pre-SIXTEEN name of Park Jihyo ?
+						<h1 class="quiz__question">
+							What was the pre-SIXTEEN name of Park Jihyo?
 						</h1>
 						<p class="quiz__header__current-question">1 of 5</p>
-						<div class="quiz__header__progress-bar">
-							<div class="quiz__header__progress-bar__inner"></div>
+						<div class="quiz__progress-bar">
+							<div class="quiz__progress-bar__inner"></div>
 						</div>
-						<p class="quiz__header__state">Complete!</p>
+						<p class="quiz__tagline">Pick an option below!</p>
 					</div>
 					<div class="quiz__body">
-						<ul class="quizz__body__choices">
-                            <!-- We'll dynamically change this using Javascript -->
+                        <ul class="quiz__body__choices-container">
+                            
 							<li class="quiz__choice">
                                 <input type="radio" name="choice" id="choice0" class="quiz__input">
                                 <label for="choice0" class="quiz__label">
@@ -53,7 +53,7 @@
                                 </label>
                             </li>
 						</ul>
-					</div>
+                    </div>
 					<div class="quiz__footer">
                         <button class ="button button--bordered next">Next</button>
                         <button class ="button button--bordered restart">Restart</button>
