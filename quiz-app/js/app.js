@@ -8,7 +8,6 @@ const App = (() => {
 	const quizQuestionEl = document.querySelector(".quiz__question");
 	const trackerEl = document.querySelector(".quiz__current-question");
 	const taglineEl = document.querySelector(".quiz__tagline");
-	const choicesContainerEl = document.querySelector(".quiz__choices-container");
 	let choicesEl = Array.from(document.querySelectorAll(".quiz__label"));
 	const innerProgressEl = document.querySelector(".quiz__progress-bar__inner");
 	const nextButtonEl = document.querySelector(".button.next");
@@ -73,8 +72,8 @@ const App = (() => {
 			return;
 		}
 		answer = answer.innerText;
-		let inputCheckedEl = document.querySelector(".quiz__input:checked");
-		inputCheckedEl.checked = false;
+		
+		
 		
 		// we then check
 		quiz.guess(answer);
@@ -83,6 +82,7 @@ const App = (() => {
 
 	}
 	function replaceQuestion() {
+		const inputCheckedEl = document.querySelector(".quiz__input:checked");
 		const currentQuestion = quiz.getCurrentQuestion();
 		const currentQuestionIndex = quiz.currentIndex + 1;
 		barWidth = barWidth + barWidthIncrease;
@@ -94,7 +94,9 @@ const App = (() => {
 			innerProgressEl.style.width = `${barWidth}%`;
 			taglineEl.innerText = "Completed!"
 			nextButtonEl.style.display = "none";
+			return;
 		}
+		inputCheckedEl.checked = false;
 		quizQuestionEl.innerText = currentQuestion.question;
 		trackerEl.innerText = `${currentQuestionIndex} of ${nQuestions}`;
 		innerProgressEl.style.width = `${barWidth}%`;
@@ -110,5 +112,6 @@ const App = (() => {
 		barWidth = 0;
 		innerProgressEl.style.width = `0%`;
 		nextButtonEl.style.display = "block";
+		taglineEl.innerText = "Pick an option below!"
 	}
 })();
