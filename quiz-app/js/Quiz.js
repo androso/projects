@@ -14,7 +14,7 @@ export default class Quiz {
         return this.currentIndex === this.questions.length;
     }
     guess (userGuess) {
-        const currentQuestion = this.getCurrentQuestion;
+        const currentQuestion = this.getCurrentQuestion();
         if (currentQuestion.isCorrect(userGuess)) {
             this.score++
         }

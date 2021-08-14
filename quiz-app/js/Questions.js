@@ -5,6 +5,7 @@ export default class Question {
         this.answerKey = answerKey;
     }
     isCorrect (answer) {
+        
         return this.choices.indexOf(answer) === this.answerKey;
     }
 }
