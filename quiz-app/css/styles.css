@@ -52,7 +52,7 @@
 }
 .quiz__progress-bar__inner {
     background: var(--light-black);
-    width: 1%;
+    width: 0%;
     height: 100%;
     border-radius: 3px;
 }
