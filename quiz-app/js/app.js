@@ -96,16 +96,17 @@ const App = (() => {
 			nextButtonEl.style.display = "none";
 			return;
 		}
-		inputCheckedEl.checked = false;
+		
+		if (inputCheckedEl) inputCheckedEl.checked = false;
 		quizQuestionEl.innerText = currentQuestion.question;
 		trackerEl.innerText = `${currentQuestionIndex} of ${nQuestions}`;
 		innerProgressEl.style.width = `${barWidth}%`;
 		choicesEl.map((choice, index) => {
 			choice.innerHTML = `<i></i>${currentQuestion.choices[index]}`;
 		});
-
 	}
 	function restart() {
+		console.log("restarted")
 		quiz.score = 0;
 		quiz.currentIndex = 0;
 		replaceQuestion();
