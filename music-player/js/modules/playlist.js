@@ -70,6 +70,11 @@ const Playlist = ((_) => {
             const newIndex = Number(songEl.getAttribute("data-song-index"));
             updateSongState(newIndex);
         })
+        window.addEventListener("keydown", event => {
+            if (event.code === "Space") {
+                updateSongState(currentlyPlayingIndex);
+            }
+        })
 
     }
 	const updateSongState = (newIndex) => {
