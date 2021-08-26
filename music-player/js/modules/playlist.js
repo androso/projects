@@ -5,14 +5,14 @@ const Playlist = ((_) => {
 	const songs = songsList;
 	let currentlyPlayingIndex = 0;
 	let currentSong = new Audio(songs[currentlyPlayingIndex].url);
-	let isplaying = false;
 
 	// DOM
 	const playlistContainerEl = document.querySelector(".playlist");
+    const playButtonEl = document.querySelector (".main-play-button");
 
 	const init = () => {
 		renderSong();
-		addListeners();
+		addListeners(); 
         
 	};
 
@@ -79,7 +79,6 @@ const Playlist = ((_) => {
 		} else {
 			currentlyPlayingIndex = newIndex;
 			currentSong.src = songs[newIndex].url;
-
 			toggleSongState();
 			renderSong();
 		}
@@ -87,6 +86,8 @@ const Playlist = ((_) => {
 	const toggleSongState = () => {
 		if (currentSong.paused) {
 			currentSong.play();
+            playButtonEl.innerText = "PAUSE";
+
             const songEndsInterval = setInterval(_ => {
                 nextSong();
                 if (currentSong.paused) {
@@ -97,6 +98,7 @@ const Playlist = ((_) => {
             // is there any way to just check after the song duration - the song currentTime safely?
 		} else {
 			currentSong.pause();
+            playButtonEl.innerText = "PLAY";
 		}
 	};
     const nextSong = () => {
@@ -108,6 +110,12 @@ const Playlist = ((_) => {
     }
 	return {
 		init,
+        songInfo: {
+            currentSong,
+            toggleSongState, 
+            renderSong
+        },
+        // toggleSongState
 	};
 })();
 
