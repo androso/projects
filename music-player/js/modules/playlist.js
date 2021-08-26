@@ -70,12 +70,6 @@ const Playlist = ((_) => {
             const newIndex = Number(songEl.getAttribute("data-song-index"));
             updateSongState(newIndex);
         })
-        window.addEventListener("keydown", event => {
-            if (event.code === "Space") {
-                updateSongState(currentlyPlayingIndex);
-            }
-        })
-
     }
 	const updateSongState = (newIndex) => {
 		if (newIndex === currentlyPlayingIndex) {
@@ -90,6 +84,7 @@ const Playlist = ((_) => {
 	};
 	const toggleSongState = () => {
 		if (currentSong.paused) {
+            
 			currentSong.play();
             playButtonEl.innerText = "PAUSE";
 
@@ -103,6 +98,7 @@ const Playlist = ((_) => {
             // is there any way to just check after the song duration - the song currentTime safely?
 		} else {
 			currentSong.pause();
+            
             playButtonEl.innerText = "PLAY";
 		}
 	};
