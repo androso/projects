@@ -13,11 +13,7 @@ const Playlist = ((_) => {
 	const init = () => {
 		renderSong();
 		addListeners();
-        const interval = setInterval(_ => {
-            if (nextSong()) {
-                clearInterval(interval);
-            };  
-        }, (currentSong.duration * 1000) - currentSong.currentTime);
+        
 	};
 
 	const renderSong = () => {
@@ -74,6 +70,7 @@ const Playlist = ((_) => {
             const newIndex = Number(songEl.getAttribute("data-song-index"));
             updateSongState(newIndex);
         })
+
     }
 	const updateSongState = (newIndex) => {
 		if (newIndex === currentlyPlayingIndex) {
@@ -90,6 +87,14 @@ const Playlist = ((_) => {
 	const toggleSongState = () => {
 		if (currentSong.paused) {
 			currentSong.play();
+            const songEndsInterval = setInterval(_ => {
+                nextSong();
+                if (currentSong.paused) {
+                    clearInterval(songEndsInterval);
+                }
+            }, 1000);
+            // We gotta search for a more less consuming-resources solution/alternative to the interval, the one we currently have is checking every second,
+            // is there any way to just check after the song duration - the song currentTime safely?
 		} else {
 			currentSong.pause();
 		}
