@@ -29,16 +29,17 @@ body {
 }
 .song__progress-bar {
     position: absolute;
+	width: 100vw; 
     top: 0;
     left: 0;
 }
 .inner-progress-bar {
 	height: 4px;
-	width: 90vw;
+	width: 90%;
 	background-color: var(--mid-gradient-color);
 	border-radius: 3px;
+	animation: track-bar 60s linear paused;
 }
-
 /*---- HEAD OF THE ALBUM CONTAINER ---- */
 .album__container {
 	display: flex;
@@ -100,9 +101,6 @@ body {
 .playlist {
 	list-style-type: none;
 }
-.playlist__song {
-	/* margin-bottom: 10px; */
-}
 .playlist__song--active .song__info {
 	background-color: var(--hover-active-bgcolor);
 	color: var(--main-app-color);
@@ -162,7 +160,6 @@ body {
         font-size: 1rem;
     }
     .album__cover {
-        /* width: 9rem; */
         width: 200px;
     }
     .album__title {
@@ -201,4 +198,14 @@ body {
         max-height: 80%;
     }
 
+}
+
+@keyframes track-bar {
+	from {
+		width: 0%;
+	}
+
+	to {
+		width: 100%;
+	}
 }
