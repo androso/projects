@@ -1,15 +1,10 @@
-// rendering the home screen
-// an h1, two buttons [newGame, instructions] linking to other modules
-
 import Game from "./game.js";
 import How from "./how.js";
 import {sound} from "../data/sound.js"
+
 const Home = ( _ => {
-    // Fetching data
-    //h1 class="hangman__title"
-    //button class="button start"
-    //button class="button instructions"
-    const $hangman = document.querySelector(".hangman");
+    // Fetching data    
+    const $hangman = document.querySelector(".hangman__container");
     const init = () => {
         render();
         addListeners();
@@ -31,7 +26,7 @@ const Home = ( _ => {
             sound.click.play();
         });
         instructionsButtonEl.addEventListener("click", _ => {
-            How.render();
+            How.init();
             sound.click.play();
         } );
     }

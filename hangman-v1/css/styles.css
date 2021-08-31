@@ -21,7 +21,7 @@ body {
   max-width: var(--container-width);
   margin: 2rem auto;
 }
-.hangman {
+.hangman__container {
   padding: 20px;
   height: 680px;
   background-color: var(--main-bg-color);
@@ -105,6 +105,7 @@ body {
   font-family: var(--font-body-stack);
   color: var(--light-white);
   text-align: center;
+  list-style-type: circle;
 }
 
 /* end screen */
