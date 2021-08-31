@@ -1,5 +1,5 @@
 import Home from "./home.js";
-import { sound as sounds } from "../data/sound.js";
+import {sound as Sounds} from "../data/sound.js";
 import wordList from "../data/dictionary.js";
 import ResultsScreen from "./results.js";
 
@@ -91,7 +91,7 @@ const Game = (() => {
 
 		$mainMenuButton.addEventListener("click", () => {
 			Home.init();
-			sounds.click.play();
+			Sounds.click.play();
 		});
 		$hangmanLetters.forEach((letter, index) => {
 			letter.addEventListener("click", () => {
@@ -108,7 +108,7 @@ const Game = (() => {
 		return Math.floor(Math.random() * array.length);
 	};
 	const toggleLetter = (letter) => {
-		sounds.click.play();
+		Sounds.click.play();
 		letter.classList.add("hangman__letter--active");
 	};
 	const isnotClicked = (letter) => {
@@ -134,14 +134,16 @@ const Game = (() => {
 		guessingWord[letterIndex] = randomWord[letterIndex];
 
         if (guessedWord()) {
-            ResultsScreen.render();
+            Sounds.win.play();
+            ResultsScreen.init("won", randomWord);
         }
 		replaceDomElement($hangmanWord, guessingWord.join(" "));
 	};
 	const updateLivesCounter = ($livesCounter) => {
 		livesLeftCounter -= 1;
 		if (livesLeftCounter < 1) {
-            ResultsScreen.render();
+            Sounds.lose.play();
+            ResultsScreen.init("lose", randomWord);
 		}
 		replaceDomElement($livesCounter, livesLeftCounter);
 	};

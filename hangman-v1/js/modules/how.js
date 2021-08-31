@@ -1,5 +1,5 @@
 import Home from "./home.js";
-import {sound} from "../data/sound.js";
+import {sound as Sounds} from "../data/sound.js";
 const How = (() => {
     const $hangman = document.querySelector(".hangman__container");
     const init = () => {
@@ -24,7 +24,7 @@ const How = (() => {
         const $hangmanTrigger = document.querySelector(".hangman__trigger");
         $hangmanTrigger.addEventListener ("click", () => {
             Home.init();
-            sound.click.play();
+            Sounds.click.play();
         });
     }
     return {
