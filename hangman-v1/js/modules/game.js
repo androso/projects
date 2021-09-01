@@ -1,41 +1,27 @@
 import Home from "./home.js";
-import {sound as Sounds} from "../data/sound.js";
+import { sound as Sounds } from "../data/sound.js";
 import wordList from "../data/dictionary.js";
 import ResultsScreen from "./results.js";
-
-// randomWord = ['M','I','N','A'];
-// i want to copy randomWord
-// so that blurredRandomWord = ['_', '_', '_', '_']
-// in renderScreen(), ${blurredRandomWord.toString()};
-// When the user clicks a letter, we check if that letter is in randomWord
-// if it is
-// we get the index of that letter in randomWord and access blurredRandomWord[index]
-// blurredRandomWord[index] = randomWord[index];
-// we end up with blurredRandomWord[index] = 'M';
-// we call renderScreen
-// render screen will update to M _ _ _
-// if it isn't
-// livesLeftCounter-=1;
-// if livesLeftCounter === 0
-// we render results screen
-// did we lose or win ?
-
+import Board from "./board.js";
 const Game = (() => {
 	const $hangmanContainer = document.querySelector(".hangman__container");
-	let livesLeftCounter = 7;
+	const defaultLives = 7;
+	let livesLeftCounter = defaultLives;
 	let randomWord = "";
 	// In order to update the word in the DOM without changing randomWord, i created this copy as a form of placeholder
 	let guessingWord = [];
+
 	const init = () => {
 		getRandomWord();
 		getWordPlaceholder();
 		renderScreen();
+		renderCanvas();
 		addListeners();
 	};
 	const getRandomWord = () => {
 		const randomIndex = getRandomIndex(wordList);
 		// randomWord = [...wordList[randomIndex]];
-        randomWord = [... "mina"];
+		randomWord = [..."mina"];
 	};
 	const getWordPlaceholder = () => {
 		guessingWord = [...randomWord];
@@ -44,6 +30,7 @@ const Game = (() => {
 		});
 	};
 	const renderScreen = () => {
+		livesLeftCounter = defaultLives;
 		let markup = `
         <p class="hangman__stats">Lives: <span class="lives-counter">${livesLeftCounter}</span></p>
         <h1 class="hangman__title">Hangman</h1>
@@ -84,6 +71,10 @@ const Game = (() => {
         <button class="button hangman__trigger">Main Menu</button>
         `;
 		$hangmanContainer.innerHTML = markup;
+	};
+	const renderCanvas = () => {
+		const $hangmanCanvas = document.querySelector("canvas");
+		Board.init($hangmanCanvas);
 	};
 	const addListeners = () => {
 		const $mainMenuButton = document.querySelector(".hangman__trigger");
@@ -126,6 +117,7 @@ const Game = (() => {
 			updateHangmanWord(letterLowerCased, $hangmanWord);
 		} else {
 			updateLivesCounter($livesCounter);
+			Board.init();
 		}
 	};
 
@@ -133,23 +125,23 @@ const Game = (() => {
 		const letterIndex = randomWord.indexOf(letter);
 		guessingWord[letterIndex] = randomWord[letterIndex];
 
-        if (guessedWord()) {
-            Sounds.win.play();
-            ResultsScreen.init("won", randomWord);
-        }
+		if (guessedWord()) {
+			Sounds.win.play();
+			ResultsScreen.init("won", randomWord);
+		}
 		replaceDomElement($hangmanWord, guessingWord.join(" "));
 	};
 	const updateLivesCounter = ($livesCounter) => {
 		livesLeftCounter -= 1;
 		if (livesLeftCounter < 1) {
-            Sounds.lose.play();
-            ResultsScreen.init("lose", randomWord);
+			Sounds.lose.play();
+			ResultsScreen.init("lose", randomWord);
 		}
 		replaceDomElement($livesCounter, livesLeftCounter);
 	};
-    const guessedWord = () => {
-        return guessingWord.toString() === randomWord.toString()
-    }
+	const guessedWord = () => {
+		return guessingWord.toString() === randomWord.toString();
+	};
 	const replaceDomElement = (element, value) => {
 		element.innerHTML = value;
 	};
