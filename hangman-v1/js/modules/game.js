@@ -20,8 +20,8 @@ const Game = (() => {
 	};
 	const getRandomWord = () => {
 		const randomIndex = getRandomIndex(wordList);
-		// randomWord = [...wordList[randomIndex]];
-		randomWord = [..."mina"];
+		randomWord = [...wordList[randomIndex]];
+		// randomWord = [..."mina"];
 	};
 	const getWordPlaceholder = () => {
 		guessingWord = [...randomWord];
@@ -74,7 +74,7 @@ const Game = (() => {
 	};
 	const renderCanvas = () => {
 		const $hangmanCanvas = document.querySelector("canvas");
-		Board.init($hangmanCanvas);
+		Board.render($hangmanCanvas, livesLeftCounter);
 	};
 	const addListeners = () => {
 		const $mainMenuButton = document.querySelector(".hangman__trigger");
@@ -94,7 +94,6 @@ const Game = (() => {
 			});
 		});
 	};
-
 	const getRandomIndex = (array) => {
 		return Math.floor(Math.random() * array.length);
 	};
@@ -117,7 +116,7 @@ const Game = (() => {
 			updateHangmanWord(letterLowerCased, $hangmanWord);
 		} else {
 			updateLivesCounter($livesCounter);
-			Board.init();
+			renderCanvas();
 		}
 	};
 

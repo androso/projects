@@ -47,7 +47,6 @@ body {
   font-size: 2.4rem;
   text-align: center;
   margin: 1.5rem 0;
-  letter-spacing: 0.6rem;
 }
 .hangman__instructions {
   font-family: var(--font-body-stack);
@@ -62,6 +61,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .hangman__letter {
   text-transform: uppercase;
@@ -77,9 +77,14 @@ body {
 .hangman__letter--active {
   background-color: #555;
 }
+
 .hangman__letter:hover {
-  cursor: default;
+  cursor: pointer;
   border: 3px solid var(--light-yellow);
+}
+.hangman__letter--active:hover {
+  cursor: default;
+  
 }
 .button {
   display: block;
