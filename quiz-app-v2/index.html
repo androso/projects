@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/styles.css" />
+		<title>Quiz App</title>
+	</head>
+	<body>
+		<div class="app">
+			<div class="quiz__customize-container">
+				<h1 class="quiz__title">It's Trivia Time!!</h1>
+					<div class="quiz__customization">
+						<div class="quiz__customize-modal">
+							<span class="customize">Customize</span>
+						</div>
+						<form class="quiz__form">
+							<div class="form__input questions-number__container">
+								<label for="questions-number">Number of Questions:</label>
+								<br />
+								<input required max="20" min="1" class="number-input"type="number" id="questions-number" placeholder="1-20" />
+								<span class="submit-error">Number must be between 1 and 20</span>
+							</div>
+							<div class="form__input category__container">
+								<label for="category">Select Category</label>
+								<br />
+								<select required id="category" class="category-select">
+									<option value="">Any Category</option>
+									<option value="books">Books</option>
+									<option value="general knowledge">General knowledge</option>
+									<option value="art">Art</option>
+									<option value="history">History</option>
+									<option value="science">Science</option>
+								</select>
+							</div>
+							<div class="form__input difficulty__container">
+								<label for="difficulty">Select Difficulty</label>
+								<br>
+								<select required id="difficulty" class="difficulty-select">
+									<option value="">Any Difficulty</option>
+									<option value="easy">Easy</option>
+									<option value="medium">Medium</option>
+									<option value="hard">Hard</option>
+								</select>
+							</div>
+							<button type="submit">START</button>
+						</form>
+					</div>
+				</div>		
+
+				<!-- <main class="quiz">
+					<div class="quiz__header">
+						<h1 class="quiz__question">
+							What was the pre-SIXTEEN name of Park Jihyo?
+						</h1>
+						<p class="quiz__current-question">1 of 6</p>
+						<div class="quiz__progress-bar">
+							<div class="quiz__progress-bar__inner"></div>
+						</div>
+						<p class="quiz__tagline">Pick an option below!</p>
+					</div>
+					<div class="quiz__body">
+						<ul class="quiz__choices-container">
+							<li class="quiz__choice">
+								<input
+									type="radio"
+									name="choice"
+									id="choice0"
+									class="quiz__input"
+								/>
+								<label for="choice0" class="quiz__label">
+									<i></i>Park Ji-soo</label
+								>
+							</li>
+							<li class="quiz__choice">
+								<input
+									type="radio"
+									name="choice"
+									id="choice1"
+									class="quiz__input"
+								/>
+								<label for="choice1" class="quiz__label">
+									<i></i>Park Jin-soo</label
+								>
+							</li>
+							<li class="quiz__choice">
+								<input
+									type="radio"
+									name="choice"
+									id="choice2"
+									class="quiz__input"
+								/>
+								<label for="choice2" class="quiz__label">
+									<i></i>Mark Jinroo</label
+								>
+							</li>
+							<li class="quiz__choice">
+								<input
+									type="radio"
+									name="choice"
+									id="choice3"
+									class="quiz__input"
+								/>
+								<label for="choice3" class="quiz__label"> <i></i>Renata</label>
+							</li>
+						</ul>
+					</div>
+					<div class="quiz__footer">
+						<button class="button button--bordered next">Next</button>
+						<button class="button button--bordered restart">Restart</button>
+					</div>
+				</main> -->
+		</div>
+		<script src="./js/app.js" type="module"></script>
+	</body>
+</html>
