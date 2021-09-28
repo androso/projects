@@ -1,4 +1,4 @@
-import { renderGameScreen } from "./quiz-screen.js"; 
+import { gameScreen } from "./quiz-screen.js"; 
 
 const $appContainer = document.querySelector(".app");
 const $QuestionsNumberInput = document.querySelector(".number-input");
@@ -40,10 +40,10 @@ const getUserData = (event) => {
 
 	const numberOfQuestions = Number($QuestionsNumberInput.value);
     const category = $selectCategory.options[$selectCategory.selectedIndex].value;
-    const categoryId = categories[category];
+    const categoryId = !category ? "" : categories[category];
     //if the difficulty the user selected is random, we're gonna send an empty string to the api instead of an id
     const difficulty = $selectDifficulty.options[$selectDifficulty.selectedIndex].value.toLowerCase();
-	renderGameScreen();
+	gameScreen(numberOfQuestions, categoryId, difficulty);
 };
 const invalidNumber = (event) => {
 	event.preventDefault();
