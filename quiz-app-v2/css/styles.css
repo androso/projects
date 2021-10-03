@@ -26,6 +26,8 @@ html {
 body {
     background-color: var(--main-bg-color);
 }
+
+/* +++++++++++++++ CUSTOMIZE SCREEN +++++++++++++++ */
 .quiz__customize-container {
     color: var(--main-font-color);
     width: 85vw;
@@ -115,12 +117,19 @@ body {
 .quiz__form button:hover {
     cursor: pointer;
 }
-/* 
+ 
+
+
+/* +++++++++++++++ MAIN-GAME SCREEN +++++++++++++++ */
+
+
 .quiz {
     padding: 2rem 1.4rem;
+    max-width: var(--container-width);
+    margin: 0 auto; 
 }
 
----------- QUIZ HEADER (AREA OF QUESTIONS) ----------
+/* ---------- QUIZ HEADER (AREA OF QUESTIONS) ---------- */
 .quiz__header {
     text-align: center;    
     font-family: var(--font-heading-stack);
@@ -129,7 +138,7 @@ body {
     font-weight: bold;
     letter-spacing: 1.5px;
     font-size: 38px; 
-    padding: 0.8rem 4rem;
+    /* padding: 0.8rem 4rem; */
     color: var(--main-font-color);
     margin-bottom: 22px;
 }
@@ -160,7 +169,7 @@ body {
     margin-bottom: 15px; 
 }
 
----------- QUIZ BODY, CHOICES ----------
+/* ---------- QUIZ BODY, CHOICES ---------- */
 .quiz__choices-container {
     list-style: none;
     display: flex;
@@ -190,6 +199,7 @@ body {
 }
 .quiz__label {
     display: flex; 
+    border: 1px solid var(--main-font-color);
     padding: 2rem 2rem; 
     align-items: center;
     cursor: pointer;
@@ -208,7 +218,7 @@ body {
 
 }
 
----------- BUTTONS ----------
+/* ---------- BUTTONS ---------- */
 .quiz__footer {
     padding: 2rem;
     display: flex;
@@ -234,4 +244,4 @@ body {
 
 .button.button--bordered {
     border: 1px solid var(--light-black);
-} */
+}

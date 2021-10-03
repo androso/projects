@@ -1,2 +1,2 @@
-import { customize } from "./modules/customize-screen.js";
-customize();
+import { customize as startGame } from "./modules/customize-screen.js";
+startGame();

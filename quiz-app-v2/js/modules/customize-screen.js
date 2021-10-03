@@ -19,6 +19,7 @@ const categories = {
 export const customize = () => {
 	addListeners();
 };
+
 const addListeners = () => {
 	$QuestionsNumberInput.addEventListener("keydown", getOnlyNumbers);
 	$submitFormButton.addEventListener("click", getUserData);
